@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { JOURNEY, STATS } from "./data";
+import { JOURNEY, JOURNEY_STATS } from "./data";
 import { Reveal, Count } from "./primitives";
 
 export default function Journey() {
@@ -21,7 +21,7 @@ export default function Journey() {
           </Reveal>
           <Reveal delay={0.25}>
             <div className="jr-stats">
-              {STATS.map((s) => (
+              {JOURNEY_STATS.map((s) => (
                 <div className="jrs" key={s.l}>
                   <span className="jrs-n">
                     <Count to={s.num} suffix={s.suffix} />

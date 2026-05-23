@@ -93,34 +93,43 @@ export const JOURNEY = [
 
 export const OUTREACH = [
   { n: "01", h: "Sea Forest",
-    d: "For every 100 points scored in a team's highest-scoring alliance match, we plant one tree. Kenya this year. British Columbia last year. We're at roughly 3,000–4,000 trees planted across two continents — and it grows wherever we compete.",
+    d: "For every 100 points scored in a team's highest-scoring alliance match, we plant one tree. Last year the trees went to British Columbia — for Washington State and the European Premier. This year they go to Kenya. We're at about 3,000–4,000 trees and it goes wherever we compete.",
     items: [
       "1 tree planted per 100 pts in a team's highest-scoring alliance match",
-      "~3,000–4,000 trees planted across Kenya and British Columbia",
-      "Last year: British Columbia · This year: Kenya via European Premier",
-      "Future plantings tied to wherever we qualify and compete globally",
+      "Last year: British Columbia — Washington State + European Premier",
+      "This year: Kenya — tied to wherever we qualify and compete",
+      "~3,000–4,000 trees planted across two continents so far",
     ]},
   { n: "02", h: "21 events. 21 sessions.",
-    d: "21 outreach events and 21 dedicated mentoring sessions this season alone. We've reached an estimated 3,500–4,000 people this year through school visits, STEM fairs, live demos, and hands-on workshops.",
+    d: "21 outreach events and 21 mentor sessions this year alone. We've impacted an estimated 3,500–4,000 people through school visits, STEM fairs, live robot demos, and donated robotics kits to Seattle Children's Hospital.",
     items: [
       "21 outreach events — schools, libraries, STEM fairs, community demos",
-      "21 structured mentoring sessions with FLL teams",
+      "21 mentor sessions with FLL teams this season",
       "3,500–4,000 people impacted this year alone",
       "Donated full robotics kits to Seattle Children's Hospital",
     ]},
   { n: "03", h: "TeamForge",
-    d: "We built TeamForge — a free team management platform for FTC and FLL teams. Scheduling, task tracking, notebook tools, and season planning in one place. Built by a team that needed it, open to every team that does.",
+    d: "We built TeamForge — a free team management platform for FTC and FLL teams. Scheduling, task tracking, notebook tools, and season planning all in one place. Built by a team that needed it, free for every team that does.",
     items: [
       "TeamForge: free team management platform for FTC and FLL",
-      "Scheduling, task tracking, engineering notebook workflow tools",
-      "Open-source robot code and notebooks available to any team",
-      "Annual season-kickoff workshops for incoming rookie teams",
+      "Scheduling, task tracking, engineering notebook tools",
+      "Open-source robot code and engineering notebooks",
+      "Built by us — available to every team for free",
     ]},
 ];
 
+// Used in the Outreach stats bar (displayed as text, not counted)
 export const STATS = [
+  { n: "3.5K+", l: "People impacted this year" },
+  { n: "3–4K",  l: "Trees planted worldwide"   },
+  { n: "21",    l: "Outreach events"            },
+  { n: "21",    l: "Mentor sessions"            },
+];
+
+// Used in Journey sidebar (animated count)
+export const JOURNEY_STATS = [
   { n: "3.5K+", l: "People impacted this year", num: 3500, suffix: "+" },
-  { n: "3K+",   l: "Trees planted worldwide",   num: 3000, suffix: "+" },
+  { n: "3K+",   l: "Trees planted",             num: 3000, suffix: "+" },
   { n: "21",    l: "Outreach events",            num: 21,   suffix: "" },
-  { n: "21",    l: "Mentoring sessions",         num: 21,   suffix: "" },
+  { n: "21",    l: "Mentor sessions",            num: 21,   suffix: "" },
 ];
