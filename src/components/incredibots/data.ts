@@ -8,10 +8,10 @@ export const NAV_ITEMS = [
 ];
 
 export const METRICS = [
-  { n: "3×", l: "FLL World Championships", grad: true, num: 3, prefix: "", suffix: "×" },
-  { n: "20+", l: "Awards won", grad: false, num: 20, prefix: "", suffix: "+" },
-  { n: "5", l: "Competition seasons", grad: false, num: 5, prefix: "", suffix: "" },
-  { n: "2×", l: "League meet wins", grad: true, num: 2, prefix: "", suffix: "×" },
+  { n: "500+", l: "Community members reached",  grad: false, num: 500, prefix: "", suffix: "+" },
+  { n: "3×",   l: "FLL World Championships",    grad: true,  num: 3,   prefix: "", suffix: "×" },
+  { n: "20+",  l: "Major awards won",            grad: false, num: 20,  prefix: "", suffix: "+" },
+  { n: "4",    l: "Teams mentored",              grad: true,  num: 4,   prefix: "", suffix: ""  },
 ];
 
 export type TickerItem = [string, string, boolean?];
@@ -25,57 +25,82 @@ export const TICKER: TickerItem[] = [
   ["Gene Haas Foundation", "STEM Education ✦", true],
   ["CDW", "Technology Solutions ✦", true],
   ["Polymaker", "Materials Partner ✦", true],
-  ["Maxwell · Meet 1", "Winners"],
+  ["Maxwell · Meet 1", "First Place"],
   ["KidsFill", "Community Partner ✦", true],
   ["See's Candies", "Community Partner ✦", true],
   ["Online Medals", "Awards Partner ✦", true],
-  ["Maxwell · Meet 2", "Winners"],
+  ["Maxwell · Meet 2", "Back-to-Back"],
   ["Hawking Interleague", "Alliance Captain"],
   ["Capek Semifinal", "Think Award · 2nd"],
   ["WPI International", "Engineering Excellence"],
   ["WA Semifinals", "Champions Award"],
+  ["Marine Machines", "WPI 2025 · Worcester, MA"],
 ];
 
 export type SponsorTier = "presenting" | "gold" | "community";
 export interface Sponsor { name: string; tier: SponsorTier; category: string; color: string; logo: string | null; }
 
 export const SPONSORS: Sponsor[] = [
-  { name: "Boeing", tier: "presenting", category: "Aerospace Partner", color: "#1a6eb5", logo: "/sponsors/boeing.svg" },
-  { name: "T-Mobile", tier: "presenting", category: "Technology Partner", color: "#e20074", logo: "/sponsors/tmobile.svg" },
-  { name: "Microsoft", tier: "presenting", category: "Technology Partner", color: "#00a4ef", logo: "/sponsors/microsoft.svg" },
-  { name: "Gene Haas Foundation", tier: "gold", category: "STEM Education", color: "#f57c00", logo: null },
-  { name: "CDW", tier: "gold", category: "Technology Solutions", color: "#c8102e", logo: null },
-  { name: "Polymaker", tier: "gold", category: "Materials Partner", color: "#2ecc71", logo: null },
-  { name: "KidsFill", tier: "community", category: "Community Partner", color: "#ff6b35", logo: null },
-  { name: "See's Candies", tier: "community", category: "Community Partner", color: "#c9a020", logo: null },
-  { name: "Online Medals", tier: "community", category: "Awards Partner", color: "#c9a84c", logo: null },
+  { name: "Boeing",             tier: "presenting", category: "Aerospace Partner",    color: "#1a6eb5", logo: "/sponsors/boeing.svg"    },
+  { name: "T-Mobile",           tier: "presenting", category: "Technology Partner",   color: "#e20074", logo: "/sponsors/tmobile.svg"   },
+  { name: "Microsoft",          tier: "presenting", category: "Technology Partner",   color: "#00a4ef", logo: "/sponsors/microsoft.svg" },
+  { name: "Gene Haas Foundation", tier: "gold",     category: "STEM Education",       color: "#f57c00", logo: null },
+  { name: "CDW",                tier: "gold",       category: "Technology Solutions", color: "#c8102e", logo: null },
+  { name: "Polymaker",          tier: "gold",       category: "Materials Partner",    color: "#2ecc71", logo: null },
+  { name: "KidsFill",           tier: "community",  category: "Community Partner",    color: "#ff6b35", logo: null },
+  { name: "See's Candies",      tier: "community",  category: "Community Partner",    color: "#c9a020", logo: null },
+  { name: "Online Medals",      tier: "community",  category: "Awards Partner",       color: "#c9a84c", logo: null },
 ];
 
-export const LEGACY = [
+export type AwardResult = "winner" | "finalist" | "2nd" | "qualifier";
+export interface AwardItem { text: string; result?: AwardResult; }
+export interface LegacyRow  { season: string; items: AwardItem[]; }
+export interface LegacyTeam { n: string; name: string; era: string; pill: string; rows: LegacyRow[]; }
+
+export const LEGACY: LegacyTeam[] = [
   {
     n: "01", name: "Incredibots", era: "Masterpiece · 2023–24", pill: "FLL · 1 Season",
     rows: [{ season: "", items: [
-      "WA Qualifiers — Champions Award & Robot Performance",
-      "WA Semifinals — Champions Award",
-      "WA State Finals — Innovation Award",
-      "WPI International — Champions Award · beat 30+ countries",
+      { text: "WA Qualifiers — Champions Award",          result: "winner"    },
+      { text: "WA Qualifiers — Robot Performance Award",  result: "winner"    },
+      { text: "WA Semifinals — Champions Award",          result: "winner"    },
+      { text: "WA Semifinals — Robot Performance Award",  result: "finalist"  },
+      { text: "WA State Finals — Innovation Award",       result: "winner"    },
+      { text: "WPI International — Champions Award",      result: "winner"    },
     ]}],
   },
   {
     n: "02", name: "Jarvis Coders", era: "2022 — 2025", pill: "FLL · 3 Seasons",
     rows: [
-      { season: "Superpowered '22–23", items: ["Robot Design Award · Worlds-qualified"] },
-      { season: "Masterpiece '23–24", items: ["Breakthrough + Robot Performance", "Rising All-Star · Worlds-qualified"] },
-      { season: "Submerged '24–25", items: ["Coach/Mentor + Robot Performance (2×) · Worlds-qualified"] },
+      { season: "Superpowered '22–23", items: [
+        { text: "Robot Design Award",         result: "winner"    },
+        { text: "Robot Performance Award",    result: "finalist"  },
+        { text: "WPI World Championship",     result: "qualifier" },
+      ]},
+      { season: "Masterpiece '23–24", items: [
+        { text: "Breakthrough Award",         result: "winner"    },
+        { text: "Robot Performance Award",    result: "winner"    },
+        { text: "Coach/Mentor Award",         result: "winner"    },
+        { text: "Championship Award",         result: "finalist"  },
+        { text: "Rising All-Star Award",      result: "winner"    },
+        { text: "WPI World Championship",     result: "qualifier" },
+      ]},
+      { season: "Submerged '24–25", items: [
+        { text: "Coach/Mentor Award",              result: "winner"    },
+        { text: "Robot Performance Award (×2)",    result: "winner"    },
+        { text: "WPI World Championship",          result: "qualifier" },
+      ]},
     ],
   },
   {
     n: "03", name: "Marine Machines", era: "Submerged · 2024–25", pill: "FLL · 1 Season",
     rows: [{ season: "", items: [
-      "FLL Qualifier — Robot Performance",
-      "FLL Semifinal — Champions Award",
-      "WA State — Engineering Excellence",
-      "WPI International — Engineering Excellence · Worcester, MA",
+      { text: "FLL Qualifier — Robot Performance Award",    result: "winner"    },
+      { text: "FLL Qualifier — Robot Design Award",         result: "finalist"  },
+      { text: "FLL Semifinal — Champions Award",            result: "winner"    },
+      { text: "FLL Semifinal — Robot Performance Award",    result: "finalist"  },
+      { text: "WA State Championship — Engineering Excellence Award", result: "winner" },
+      { text: "WPI International — Engineering Excellence Award",     result: "winner" },
     ]}],
   },
 ];
@@ -93,43 +118,67 @@ export const JOURNEY = [
 
 export const OUTREACH = [
   { n: "01", h: "Sea Forest",
-    d: "For every 100 points a team scores in its highest-scoring alliance match, we plant one tree. Last year's trees went to British Columbia, tied to our Washington State and European Premier events. This year they go to Kenya. We've planted roughly 3,000 to 4,000 trees so far, wherever we compete.",
+    d: "For every 100 points a team scores in its highest-scoring alliance match, we plant one tree. Trees have gone to British Columbia, tied to our Washington State and European Premier events, and this year to Kenya. We have planted roughly 3,000 to 4,000 trees across two continents.",
     items: [
-      "1 tree planted per 100 pts in a team's highest-scoring alliance match",
-      "Last year: British Columbia — Washington State + European Premier",
-      "This year: Kenya — tied to wherever we qualify and compete",
+      "1 tree per 100 points in a team's highest-scoring match",
+      "Previous seasons: British Columbia — WA State + European Premier",
+      "Current season: Kenya — wherever we qualify and compete",
       "~3,000–4,000 trees planted across two continents so far",
     ]},
-  { n: "02", h: "21 events. 21 sessions.",
-    d: "We ran 21 outreach events and 21 mentor sessions this season, reaching an estimated 3,500 to 4,000 people through school visits, STEM fairs, and live robot demos. We also donated robotics kits to Seattle Children's Hospital.",
+  { n: "02", h: "Community Events",
+    d: "We ran 21 outreach events and 21 mentor sessions this season, reaching an estimated 3,500 to 4,000 people through school visits, STEM fairs, and live robot demonstrations. We also donated full robotics kits to Seattle Children's Hospital.",
     items: [
       "21 outreach events — schools, libraries, STEM fairs, community demos",
       "21 mentor sessions with FLL teams this season",
       "3,500–4,000 people impacted this year alone",
       "Donated full robotics kits to Seattle Children's Hospital",
     ]},
-  { n: "03", h: "TeamForge",
+  { n: "03", h: "FLL Mentorship",
+    d: "We mentor four active FLL teams, providing coaching, strategy sessions, and engineering notebook guidance. Our members competed in FLL for five seasons before moving to FTC — we pass that experience directly to the next generation.",
+    items: [
+      "4 active FLL teams currently mentored",
+      "Weekly strategy and engineering notebook sessions",
+      "5 combined seasons of FLL competition experience shared",
+      "3 mentored teams have qualified for the World Championship",
+    ]},
+  { n: "04", h: "Sonic Dunk!",
+    d: "Our 2023–24 FLL Innovation Project. We designed a sonar-based audio guidance system to make basketball accessible to visually impaired athletes — giving players real-time audio cues for aim and shot placement without any visual reference.",
+    items: [
+      "FLL Innovation Project 2023–24 season",
+      "Sonar-based audio cues for aim and shot guidance",
+      "Designed for athletes with visual impairments",
+      "Prototyped and presented at regional and state competitions",
+    ]},
+  { n: "05", h: "Arduino Education",
+    d: "We run workshops teaching younger students the basics of Arduino hardware and embedded programming. Students build their first circuits, write their first code, and learn how sensors, motors, and logic work — the same foundation our robot runs on.",
+    items: [
+      "Arduino and embedded hardware workshops for middle schoolers",
+      "Students build circuits and write code from scratch",
+      "Video series available for remote and self-paced learning",
+      "Covers sensors, motors, logic, and basic robotics concepts",
+    ]},
+  { n: "06", h: "TeamForge",
     d: "TeamForge is a free team-management platform we built for FTC and FLL teams. It brings scheduling, task tracking, notebook tools, and season planning into one place. We built it because we needed it, and we make it free for every team that does.",
     items: [
-      "TeamForge: free team management platform for FTC and FLL",
+      "Free team-management platform for FTC and FLL",
       "Scheduling, task tracking, engineering notebook tools",
       "Open-source robot code and engineering notebooks",
-      "Built by us — available to every team for free",
+      "Built by our team — available to every team, always free",
     ]},
 ];
 
-// Used in the Outreach stats bar (displayed as text, not counted)
+// Outreach stats bar
 export const STATS = [
   { n: "3.5K+", l: "People impacted this year" },
   { n: "3–4K",  l: "Trees planted worldwide"   },
   { n: "21",    l: "Outreach events"            },
-  { n: "21",    l: "Mentor sessions"            },
+  { n: "4",     l: "Teams mentored"             },
 ];
 
-// Used in Journey sidebar (animated count)
+// Journey sidebar (animated count)
 export const JOURNEY_STATS = [
   { n: "3.5K+", l: "People impacted this year", num: 3500, suffix: "+" },
   { n: "3K+",   l: "Trees planted",             num: 3000, suffix: "+" },
-  { n: "21",    l: "Outreach events",            num: 21,   suffix: "" },
-  { n: "21",    l: "Mentor sessions",            num: 21,   suffix: "" },
+  { n: "21",    l: "Outreach events",            num: 21,   suffix: ""  },
+  { n: "4",     l: "Teams mentored",             num: 4,    suffix: ""  },
 ];

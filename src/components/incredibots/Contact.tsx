@@ -96,13 +96,27 @@ export default function Contact() {
               </a>
             </Reveal>
             <Reveal delay={0.3}>
+              <a href="https://www.facebook.com/people/Incredibots/61556642572543" target="_blank" rel="noopener noreferrer" className="ct-row">
+                <span className="ct-k">Facebook</span>
+                <span className="ct-v">The Incredibots</span>
+                <span className="ct-arr">&rarr;</span>
+              </a>
+            </Reveal>
+            <Reveal delay={0.35}>
+              <a href="https://www.youtube.com/@IncredibotSquad" target="_blank" rel="noopener noreferrer" className="ct-row">
+                <span className="ct-k">YouTube</span>
+                <span className="ct-v">Incredibot Squad</span>
+                <span className="ct-arr">&rarr;</span>
+              </a>
+            </Reveal>
+            <Reveal delay={0.4}>
               <a href="https://maps.google.com/?q=Sammamish,WA" target="_blank" rel="noopener noreferrer" className="ct-row">
                 <span className="ct-k"><MapPin size={12} style={{ display: "inline", marginRight: 4, verticalAlign: "-1px" }} aria-hidden />Location</span>
                 <span className="ct-v">Sammamish, WA</span>
                 <span className="ct-arr">&rarr;</span>
               </a>
             </Reveal>
-            <Reveal delay={0.35}>
+            <Reveal delay={0.45}>
               <div className="ct-row ct-row-static">
                 <span className="ct-k">Team</span>
                 <span className="ct-v">FTC #26336</span>

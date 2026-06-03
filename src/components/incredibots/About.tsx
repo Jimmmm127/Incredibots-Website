@@ -42,8 +42,13 @@ export default function About() {
           </Reveal>
           <Reveal delay={0.25}>
             <p className="body">
-              Before FTC, our members competed for five seasons in FIRST LEGO League, earning three trips to the World Championship and more than 20 awards. Off the field, we built TeamForge, run our Sea Forest tree-planting program, and held 21 outreach events that reached over 3,500 people this year.
+              Before FTC, our members competed for five seasons in FIRST LEGO League, earning three trips to the World Championship and more than 20 awards. Off the field, we built TeamForge, run our Sea Forest tree-planting program, and held 21 outreach events reaching over 3,500 people this year.
             </p>
+          </Reveal>
+          <Reveal delay={0.32}>
+            <blockquote className="about-mission">
+              &ldquo;Promote a better and greener planet, teach others about robotics, and have fun while doing it.&rdquo;
+            </blockquote>
           </Reveal>
           <div className="about-stats">
             {ABOUT_STATS.map((s, i) => (

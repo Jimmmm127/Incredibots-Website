@@ -2,10 +2,26 @@
 
 import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { LEGACY } from "./data";
+import { LEGACY, type AwardResult } from "./data";
 import { Reveal } from "./primitives";
 
 const ease = [0.16, 1, 0.3, 1] as const;
+
+const RESULT_LABEL: Record<AwardResult, string> = {
+  winner:    "Winner",
+  finalist:  "Finalist",
+  "2nd":     "2nd Place",
+  qualifier: "Worlds",
+};
+
+function AwardBadge({ result }: { result?: AwardResult }) {
+  if (!result) return null;
+  return (
+    <span className={`lg-badge lg-badge--${result}`}>
+      {RESULT_LABEL[result]}
+    </span>
+  );
+}
 
 export default function Legacy() {
   const [active, setActive] = useState(0);
@@ -40,7 +56,7 @@ export default function Legacy() {
           </div>
           <Reveal delay={0.15}>
             <p className="body">
-              Before our FTC team formed, our members competed under three FIRST LEGO League teams across five seasons. Together they earned state championships and competed against teams from more than 30 countries at the World Championship.
+              Before our FTC team formed, our members competed under three FIRST LEGO League teams across five seasons. Together they earned state championships, 20+ major awards, and competed at the World Championship three times.
             </p>
           </Reveal>
         </div>
@@ -48,7 +64,7 @@ export default function Legacy() {
         <Reveal>
           <div className="leg-award-count">
             <span className="leg-award-dot" />
-            3 teams &middot; 5 seasons &middot; 20+ major awards
+            3 teams &middot; 5 seasons &middot; 20+ major awards &middot; 3 World Championship qualifications
           </div>
         </Reveal>
 
@@ -94,10 +110,12 @@ export default function Legacy() {
                         <motion.li key={ii}
                           initial={{ opacity: 0, x: -8 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.08 + ii * 0.05, duration: 0.42, ease }}
+                          transition={{ delay: 0.06 + ii * 0.04, duration: 0.38, ease }}
+                          className="lg-li"
                         >
                           <span className="lg-bullet">&rarr;</span>
-                          <span>{it}</span>
+                          <span className="lg-li-text">{it.text}</span>
+                          <AwardBadge result={it.result} />
                         </motion.li>
                       ))}
                     </ul>

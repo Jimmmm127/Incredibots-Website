@@ -733,12 +733,25 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   letter-spacing: 0.1em; text-transform: uppercase;
   color: rgba(255, 255, 255, 0.35); margin-bottom: 0.75rem;
 }
-.lg-ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
-.lg-ul li {
-  display: flex; align-items: flex-start; gap: 10px;
-  font-size: 15px; color: rgba(255, 255, 255, 0.8); line-height: 1.5;
+.lg-ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.lg-li {
+  display: flex; align-items: flex-start; gap: 10px; flex-wrap: wrap;
+  font-size: 14.5px; color: rgba(255, 255, 255, 0.8); line-height: 1.5;
 }
+.lg-li-text { flex: 1; min-width: 0; }
 .lg-bullet { color: var(--c1); font-size: 12px; margin-top: 3px; flex-shrink: 0; font-weight: 700; }
+
+/* Award result badges */
+.lg-badge {
+  flex-shrink: 0; align-self: flex-start; margin-top: 2px;
+  font-family: var(--mono); font-size: 9.5px; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 4px;
+}
+.lg-badge--winner    { background: rgba(230,57,70,0.18); color: #ff7a86; border: 1px solid rgba(230,57,70,0.35); }
+.lg-badge--finalist  { background: rgba(255,255,255,0.06); color: var(--muted); border: 1px solid var(--line-2); }
+.lg-badge--2nd       { background: rgba(74,163,232,0.14); color: #7dc6f5; border: 1px solid rgba(74,163,232,0.3); }
+.lg-badge--qualifier { background: rgba(74,163,232,0.18); color: #7dc6f5; border: 1px solid rgba(74,163,232,0.35); }
 
 /* ───────── Journey ───────── */
 .journey-grid {
@@ -803,6 +816,18 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
   margin-bottom: 2.5rem; align-items: end;
 }
 .out-head .body { align-self: end; justify-self: end; max-width: 460px; }
+/* Mission statement blockquote */
+.about-mission {
+  margin: 1.5rem 0 0;
+  padding: 1rem 1.25rem;
+  border-left: 2px solid var(--c1);
+  background: rgba(230,57,70,0.05);
+  border-radius: 0 8px 8px 0;
+  font-size: 14px; line-height: 1.65;
+  color: var(--ink-2); font-style: italic;
+  letter-spacing: 0.01em;
+}
+
 .out-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; align-items: start; }
 .oc {
   background: var(--surface); border: 1px solid var(--line);
@@ -1332,7 +1357,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 }
 /* ── Tablet 640–979px (override the 980px breakpoint above) ── */
 @media (min-width: 640px) and (max-width: 979px) {
-  .out-cards { grid-template-columns: repeat(2, 1fr); }
+  .out-cards { grid-template-columns: repeat(2, 1fr); }  /* 2-col tablet */
   .sp-presenting-row { grid-template-columns: repeat(2, 1fr); }
 }
 @media (min-width: 720px) and (max-width: 979px) {

@@ -120,7 +120,7 @@ export default function Hero() {
             <span className="eyebrow-dot" />
             FTC Team #26336 · Sammamish, WA
           </span>
-          <span className="hero-status-r">2024–25 Season · FIRST Tech Challenge</span>
+          <span className="hero-status-r">2025–26 Season · FIRST Tech Challenge</span>
         </motion.div>
 
         {/* Headline — per-line clip reveal, left-aligned */}
@@ -132,7 +132,7 @@ export default function Hero() {
               animate={{ y: "0%" }}
               transition={{ delay: 0.42, duration: 0.95, ease }}
             >
-              First-year team.
+              Five seasons.
             </motion.span>
           </span>
           <span className="line-wrap">
@@ -150,10 +150,10 @@ export default function Hero() {
         {/* Lead + CTAs */}
         <div className="hero-lead">
           <motion.p className="hero-sub" {...rise(2)}>
-            We are FTC Team #26336, a robotics team of middle and high school
-            students from Sammamish, Washington. In our first FTC season we won
-            both league meets and captained a playoff alliance, backed by five
-            years of FIRST competition and three trips to the World Championship.
+            FTC Team #26336 from Sammamish, Washington. Five seasons in FIRST,
+            three trips to the World Championship, and a mission to promote a better
+            planet through robotics. We compete, we mentor, and we build tools
+            that every team can use for free.
           </motion.p>
           <motion.div className="hero-ctas" {...rise(3)}>
             <MagneticLink href="#about" className="btn btn-grad btn-hero" onClick={click("about")}>
