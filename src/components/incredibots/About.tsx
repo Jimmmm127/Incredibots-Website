@@ -4,9 +4,9 @@ import Image from "next/image";
 import { Reveal, TiltCard } from "./primitives";
 
 const ABOUT_STATS = [
-  { n: "1st", l: "FTC Meet Win" },
-  { n: "5", l: "Years Competing" },
-  { n: "3×", l: "FLL Worlds" },
+  { n: "1st", l: "First FTC meet" },
+  { n: "5", l: "Seasons in FIRST" },
+  { n: "3×", l: "FLL World trips" },
 ];
 
 export default function About() {
@@ -33,16 +33,16 @@ export default function About() {
         <div className="about-r">
           <Reveal><span className="cap"><em>About</em> the team</span></Reveal>
           <Reveal delay={0.05} clip>
-            <h2 className="h-section">The underdogs<br />with receipts.</h2>
+            <h2 className="h-section">Built on five<br />years of FIRST.</h2>
           </Reveal>
           <Reveal delay={0.15}>
             <p className="lead">
-              Most first-year FTC teams spend Meet 1 learning how to drive. We spent it accepting the first-place trophy — then came back and did it again at Meet 2. The Incredibots are middle and high schoolers from Sammamish, but &ldquo;rookie&rdquo; never fit.
+              Most first-year FTC teams spend their first tournament learning to drive. We won ours, then won the next one too. The Incredibots are middle and high school students from Sammamish, Washington, with five seasons of FIRST competition behind us.
             </p>
           </Reveal>
           <Reveal delay={0.25}>
             <p className="body">
-              Five FLL seasons. Three World Championship trips. 20+ major awards. When we stepped into FTC we didn&rsquo;t start over — we leveled up. We also built TeamForge, run Sea Forest (3,000+ trees planted), and put on 21 outreach events that reached 3,500+ people this year.
+              Before FTC, our members competed for five seasons in FIRST LEGO League, earning three trips to the World Championship and more than 20 awards. Off the field, we built TeamForge, run our Sea Forest tree-planting program, and held 21 outreach events that reached over 3,500 people this year.
             </p>
           </Reveal>
           <div className="about-stats">

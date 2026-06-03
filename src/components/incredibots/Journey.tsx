@@ -16,7 +16,7 @@ export default function Journey() {
           </Reveal>
           <Reveal delay={0.15}>
             <p className="body">
-              Meet 2. First place again. Then Alliance Captain. Then a top engineering award. Built on five seasons of FLL — this is what year one looks like when you already know how to win.
+              We won our first league meet, then won the second. We captained a playoff alliance and placed for a top engineering award, all in our rookie FTC season and built on five seasons of FIRST LEGO League.
             </p>
           </Reveal>
           <Reveal delay={0.25}>

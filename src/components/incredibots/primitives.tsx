@@ -5,7 +5,7 @@ import {
   useTransform, useAnimationFrame, useInView, animate,
   type MotionProps,
 } from "framer-motion";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, createContext, useContext, type ReactNode } from "react";
 import type { RefObject } from "react";
 
 /* ── smooth scroll ── */
@@ -13,6 +13,32 @@ export function smoothScrollTo(id: string) {
   const el = document.getElementById(id);
   if (!el) return;
   el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+/* ── Scroll container context ──
+   The page scrolls inside #root-content (not the window), so every
+   scroll-linked animation needs that element as its container. We share a
+   single ref through context instead of reaching for getElementById in an
+   effect — that avoids set-state-in-effect and gives framer-motion a stable
+   RefObject from the first render. */
+const ScrollContainerContext = createContext<RefObject<HTMLDivElement | null> | null>(null);
+
+export function ScrollProvider({ children }: { children: ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  return (
+    <ScrollContainerContext.Provider value={ref}>
+      {children}
+    </ScrollContainerContext.Provider>
+  );
+}
+
+export function useScrollContainer() {
+  return useContext(ScrollContainerContext);
+}
+
+export function RootContent({ children }: { children: ReactNode }) {
+  const ref = useScrollContainer();
+  return <main id="root-content" ref={ref} tabIndex={-1}>{children}</main>;
 }
 
 /* ── wrap utility (mirrors framer-motion's wrap) ── */
@@ -196,10 +222,9 @@ export function Count({ to, suffix = "", prefix = "", duration = 1.6 }: CountPro
 export type MarqueeItem = [string, string, boolean?];
 interface VelocityMarqueeProps { items: MarqueeItem[]; baseVelocity?: number; }
 export function VelocityMarquee({ items, baseVelocity = -3 }: VelocityMarqueeProps) {
-  const [scrollEl, setScrollEl] = useState<HTMLElement | null>(null);
-  useEffect(() => { setScrollEl(document.getElementById("root-content")); }, []);
+  const container = useScrollContainer();
   const baseX = useMotionValue(0);
-  const { scrollY } = useScroll(scrollEl ? { container: { current: scrollEl } } : undefined);
+  const { scrollY } = useScroll(container ? { container } : undefined);
   const velocity = useVelocity(scrollY);
   const smoothV = useSpring(velocity, { damping: 50, stiffness: 400 });
   const factor = useTransform(smoothV, [0, 1000], [0, 5], { clamp: false });
@@ -245,7 +270,7 @@ export function Spotlight() {
     <motion.div
       className="spotlight"
       style={{
-        background: `radial-gradient(380px circle at ${sx}px ${sy}px, rgba(230,57,70,0.09), transparent 70%)`,
+        background: `radial-gradient(420px circle at ${sx}px ${sy}px, rgba(255,255,255,0.035), transparent 72%)`,
       }}
     />
   );
@@ -253,9 +278,8 @@ export function Spotlight() {
 
 /* ── ProgressBar ── */
 export function ProgressBar() {
-  const [scrollEl, setScrollEl] = useState<HTMLElement | null>(null);
-  useEffect(() => { setScrollEl(document.getElementById("root-content")); }, []);
-  const { scrollYProgress } = useScroll(scrollEl ? { container: { current: scrollEl } } : undefined);
+  const container = useScrollContainer();
+  const { scrollYProgress } = useScroll(container ? { container } : undefined);
   const sx = useSpring(scrollYProgress, { stiffness: 110, damping: 30 });
   return <motion.div className="progress" style={{ scaleX: sx }} />;
 }

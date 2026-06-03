@@ -11,47 +11,49 @@ const ARROW = (
   </svg>
 );
 
-function PresentingCard({ s, i }: { s: Sponsor; i: number }) {
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+/* A single partner cell. Monochrome at rest; the partner's brand color
+   blooms on hover (glow + hairline) — the "trusted-by" wall pattern. */
+function PartnerCell({ s, i, featured }: { s: Sponsor; i: number; featured?: boolean }) {
+  const idx = String(i + 1).padStart(2, "0");
   return (
     <motion.div
-      className="sp-pres-card"
-      initial={{ opacity: 0, y: 24 }}
+      className={"sp-cell" + (featured ? " sp-cell-lg" : "")}
+      initial={{ opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.7, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ y: -4, scale: 1.015 }}
-      style={{ "--sp-color": s.color } as React.CSSProperties}
+      transition={{ duration: 0.62, delay: i * 0.05, ease: EASE }}
+      style={{ "--sp": s.color } as React.CSSProperties}
     >
-      <div className="sp-pres-glow" aria-hidden />
-      <span className="sp-pres-tier">Presenting Partner</span>
-      <div className="sp-pres-logo">
+      <span className="sp-cell-bloom" aria-hidden />
+      <div className="sp-cell-top">
+        <span className="sp-cell-idx">{idx}</span>
+        <span className="sp-cell-cat">{s.category}</span>
+      </div>
+      <div className="sp-cell-mark">
         {s.logo ? (
           /* eslint-disable-next-line @next/next/no-img-element */
-          <img src={s.logo} alt={s.name} className="sp-logo-img" />
+          <img src={s.logo} alt={`${s.name} logo`} className="sp-cell-logo" loading="lazy" decoding="async" />
         ) : (
-          <span className="sp-pres-name">{s.name}</span>
+          <span className="sp-cell-word">{s.name}</span>
         )}
       </div>
-      <span className="sp-pres-cat">{s.category}</span>
+      <span className="sp-cell-rule" aria-hidden />
+      {featured && <span className="sp-cell-name">{s.name}</span>}
     </motion.div>
   );
 }
 
-function SmallCard({ s, i }: { s: Sponsor; i: number }) {
+function TierHead({ label, count }: { label: string; count: number }) {
   return (
-    <motion.div
-      className="sp-sm-card"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.6, delay: i * 0.07, ease: [0.16, 1, 0.3, 1] }}
-      whileHover={{ y: -3, scale: 1.02 }}
-      style={{ "--sp-color": s.color } as React.CSSProperties}
-    >
-      <span className="sp-sm-name">{s.name}</span>
-      <span className="sp-sm-cat">{s.category}</span>
-      <div className="sp-sm-bar" aria-hidden />
-    </motion.div>
+    <Reveal>
+      <div className="sp-tier-head">
+        <span className="sp-tier-label">{label}</span>
+        <span className="sp-tier-rule" aria-hidden />
+        <span className="sp-tier-count">{String(count).padStart(2, "0")}</span>
+      </div>
+    </Reveal>
   );
 }
 
@@ -73,46 +75,50 @@ export default function Sponsors() {
       <div className="sec-inner">
         <div className="sp-head">
           <div>
-            <Reveal><span className="cap"><em>Sponsors</em> &mdash; partners</span></Reveal>
-            <Reveal delay={0.05}>
+            <Reveal><span className="cap"><em>Sponsors</em> &mdash; the partner registry</span></Reveal>
+            <Reveal delay={0.05} clip>
               <h2 className="h-section">The names<br />on our robot.</h2>
             </Reveal>
           </div>
           <Reveal delay={0.15}>
             <p className="body">
-              Boeing. T-Mobile. Microsoft. These aren&rsquo;t just logos — they&rsquo;re organizations that bet on us before we proved anything. Their belief funds our builds, their names ride with us every match.
+              Boeing. T-Mobile. Microsoft. Their support funds our builds, our travel, and our outreach. Every sponsor&rsquo;s name rides with us on the robot and appears in the engineering notebook we submit at each event.
             </p>
           </Reveal>
         </div>
 
         <div className="sp-body">
-          {/* Presenting — large feature row */}
-          <div className="sp-presenting-row">
-            {presenting.map((s, i) => <PresentingCard key={s.name} s={s} i={i} />)}
+          {/* Presenting — featured logo wall */}
+          <div className="sp-tier">
+            <TierHead label="Presenting Partners" count={presenting.length} />
+            <div className="sp-wall sp-wall-lg">
+              {presenting.map((s, i) => <PartnerCell key={s.name} s={s} i={i} featured />)}
+            </div>
           </div>
 
-          {/* Gold + Community */}
-          <div className="sp-lower">
-            <div className="sp-lower-col">
-              <Reveal><div className="sp-tier-label">Gold Sponsors</div></Reveal>
-              <div className="sp-sm-grid">
-                {gold.map((s, i) => <SmallCard key={s.name} s={s} i={i} />)}
-              </div>
+          {/* Gold — supporting */}
+          <div className="sp-tier">
+            <TierHead label="Gold Sponsors" count={gold.length} />
+            <div className="sp-wall">
+              {gold.map((s, i) => <PartnerCell key={s.name} s={s} i={i} />)}
             </div>
-            <div className="sp-lower-col">
-              <Reveal><div className="sp-tier-label">Community Partners</div></Reveal>
-              <div className="sp-sm-grid">
-                {community.map((s, i) => <SmallCard key={s.name} s={s} i={i} />)}
-              </div>
+          </div>
+
+          {/* Community */}
+          <div className="sp-tier">
+            <TierHead label="Community Partners" count={community.length} />
+            <div className="sp-wall">
+              {community.map((s, i) => <PartnerCell key={s.name} s={s} i={i} />)}
             </div>
           </div>
 
           {/* CTA */}
-          <Reveal delay={0.2}>
+          <Reveal delay={0.1}>
             <div className="sp-cta">
-              <div>
+              <div className="sp-cta-copy">
+                <span className="sp-cta-eyebrow">Open partnership</span>
                 <h3>Put your name on the robot.</h3>
-                <p>Your logo reaches every judge, engineer, and student we meet. Our engineering notebook goes to every judge at every event.</p>
+                <p>Your logo travels with us to every competition, in front of the judges, engineers, and students we meet, and appears in the engineering notebook we submit at each event.</p>
               </div>
               <MagneticLink href="#contact" className="btn btn-grad btn-lg" onClick={clickSponsor}>
                 Become a sponsor {ARROW}

@@ -23,7 +23,7 @@ export default function Outreach() {
           </div>
           <Reveal delay={0.15}>
             <p className="body">
-              For every 100 points scored in a team&rsquo;s best match, we plant one tree — Kenya this year, British Columbia last year. 3,000+ trees, 21 events, 3,500+ people. Outreach isn&rsquo;t a checkbox for us.
+              For every 100 points a team scores in its best match, we plant a tree. We&rsquo;ve planted over 3,000 so far, from British Columbia to Kenya. This year we also ran 21 outreach events that reached more than 3,500 people.
             </p>
           </Reveal>
         </div>

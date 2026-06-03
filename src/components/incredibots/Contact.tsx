@@ -78,7 +78,7 @@ export default function Contact() {
             <h2 className="h-section">Say hello.<br />We respond.</h2>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="lead">Sponsorships, team applications, Sea Forest, TeamForge &mdash; whatever brought you here, we read every message and reply within 48 hours.</p>
+            <p className="lead">Whether you&rsquo;re interested in sponsorship, joining the team, or our Sea Forest and TeamForge programs, send us a message. We read every one and reply within 48 hours.</p>
           </Reveal>
           <div className="ct-channels">
             <Reveal delay={0.2}>
@@ -142,14 +142,16 @@ export default function Contact() {
                 <label>
                   <span>Name</span>
                   <input name="name" value={form.name} onChange={(e) => set("name", e.target.value)}
-                    placeholder="Jane Smith" aria-invalid={!!errors.name} />
-                  {errors.name && <span className="ct-error">{errors.name}</span>}
+                    placeholder="Jane Smith" aria-invalid={!!errors.name}
+                    aria-describedby={errors.name ? "ct-err-name" : undefined} autoComplete="name" />
+                  {errors.name && <span id="ct-err-name" className="ct-error" role="alert">{errors.name}</span>}
                 </label>
                 <label>
                   <span>Email</span>
                   <input name="email" type="email" value={form.email} onChange={(e) => set("email", e.target.value)}
-                    placeholder="jane@company.com" aria-invalid={!!errors.email} />
-                  {errors.email && <span className="ct-error">{errors.email}</span>}
+                    placeholder="jane@company.com" aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? "ct-err-email" : undefined} autoComplete="email" />
+                  {errors.email && <span id="ct-err-email" className="ct-error" role="alert">{errors.email}</span>}
                 </label>
                 <label>
                   <span>Interest</span>
@@ -165,10 +167,11 @@ export default function Contact() {
                   <span>Message</span>
                   <textarea name="message" rows={4} value={form.message} onChange={(e) => set("message", e.target.value)}
                     placeholder={form.interest === "Join the team" ? "Tell us about yourself — your school year, any robotics experience, and why you want to join…" : "Tell us what you're thinking…"}
-                    aria-invalid={!!errors.message} />
-                  {errors.message && <span className="ct-error">{errors.message}</span>}
+                    aria-invalid={!!errors.message}
+                    aria-describedby={errors.message ? "ct-err-message" : undefined} />
+                  {errors.message && <span id="ct-err-message" className="ct-error" role="alert">{errors.message}</span>}
                 </label>
-                {status === "error" && <div className="ct-error-block">Something went wrong. Email us directly at incredibotsftc@gmail.com.</div>}
+                {status === "error" && <div className="ct-error-block" role="alert">Something went wrong. Email us directly at incredibotsftc@gmail.com.</div>}
                 <MagneticButton type="submit" className="btn btn-grad btn-full" disabled={status === "sending"}>
                   <span>{status === "sending" ? "Sending…" : form.interest === "Join the team" ? "Apply now" : "Send message"}</span>
                   {ARROW}

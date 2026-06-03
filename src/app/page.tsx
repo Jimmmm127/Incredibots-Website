@@ -9,17 +9,19 @@ import Sponsors from "@/components/incredibots/Sponsors";
 import Contact from "@/components/incredibots/Contact";
 import Footer from "@/components/incredibots/Footer";
 import SponsorFlash from "@/components/incredibots/SponsorFlash";
-import { Spotlight, ProgressBar } from "@/components/incredibots/primitives";
+import NewsletterPopup from "@/components/incredibots/NewsletterPopup";
+import { Spotlight, ProgressBar, ScrollProvider, RootContent } from "@/components/incredibots/primitives";
 
 export default function Home() {
   return (
-    <>
+    <ScrollProvider>
+      <a href="#root-content" className="skip-link">Skip to content</a>
       <div className="aurora" aria-hidden="true" />
       <div className="grain" aria-hidden="true" />
       <Spotlight />
       <ProgressBar />
       <Nav />
-      <div id="root-content">
+      <RootContent>
         <Hero />
         <ScrollText />
         <About />
@@ -28,9 +30,10 @@ export default function Home() {
         <Outreach />
         <Sponsors />
         <Contact />
-      </div>
+      </RootContent>
       <Footer />
       <SponsorFlash />
-    </>
+      <NewsletterPopup />
+    </ScrollProvider>
   );
 }

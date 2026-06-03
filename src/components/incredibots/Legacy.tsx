@@ -40,7 +40,7 @@ export default function Legacy() {
           </div>
           <Reveal delay={0.15}>
             <p className="body">
-              Before forming our FTC team, our members competed under three FLL banners &mdash; earning state championships and international titles across five seasons. We&rsquo;ve beaten teams from 30+ countries.
+              Before our FTC team formed, our members competed under three FIRST LEGO League teams across five seasons. Together they earned state championships and competed against teams from more than 30 countries at the World Championship.
             </p>
           </Reveal>
         </div>
