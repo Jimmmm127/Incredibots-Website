@@ -30,8 +30,8 @@ export default function Home() {
         <Outreach />
         <Sponsors />
         <Contact />
+        <Footer />
       </RootContent>
-      <Footer />
       <SponsorFlash />
       <NewsletterPopup />
     </ScrollProvider>

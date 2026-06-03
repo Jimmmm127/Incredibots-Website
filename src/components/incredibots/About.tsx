@@ -37,12 +37,12 @@ export default function About() {
           </Reveal>
           <Reveal delay={0.15}>
             <p className="lead">
-              Most first-year FTC teams spend their first tournament learning to drive. We won ours, then won the next one too. The Incredibots are middle and high school students from Sammamish, Washington, with five seasons of FIRST competition behind us.
+              The Incredibots didn&rsquo;t arrive as rookies. Five FLL seasons, twenty-plus major awards, and three World Championship trips came first. When we stepped up to FTC, we stepped up to win &mdash; and we did, back to back.
             </p>
           </Reveal>
           <Reveal delay={0.25}>
             <p className="body">
-              Before FTC, our members competed for five seasons in FIRST LEGO League, earning three trips to the World Championship and more than 20 awards. Off the field, we built TeamForge, run our Sea Forest tree-planting program, and held 21 outreach events reaching over 3,500 people this year.
+              Our members are middle and high school students from Sammamish, Washington. Off the competition floor, we built TeamForge &mdash; a free platform for FTC &amp; FLL teams worldwide &mdash; and run Sea Forest, our tree-planting program that has now planted over 3,000 trees across two continents.
             </p>
           </Reveal>
           <Reveal delay={0.32}>

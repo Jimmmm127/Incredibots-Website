@@ -117,7 +117,7 @@ export const JOURNEY = [
 ];
 
 export const OUTREACH = [
-  { n: "01", h: "Sea Forest",
+  { n: "01", h: "Sea Forest", icon: "tree", accent: "#22c55e",
     d: "For every 100 points a team scores in its highest-scoring alliance match, we plant one tree. Trees have gone to British Columbia, tied to our Washington State and European Premier events, and this year to Kenya. We have planted roughly 3,000 to 4,000 trees across two continents.",
     items: [
       "1 tree per 100 points in a team's highest-scoring match",
@@ -125,7 +125,7 @@ export const OUTREACH = [
       "Current season: Kenya — wherever we qualify and compete",
       "~3,000–4,000 trees planted across two continents so far",
     ]},
-  { n: "02", h: "Community Events",
+  { n: "02", h: "Community Events", icon: "users", accent: "#4aa3e8",
     d: "We ran 21 outreach events and 21 mentor sessions this season, reaching an estimated 3,500 to 4,000 people through school visits, STEM fairs, and live robot demonstrations. We also donated full robotics kits to Seattle Children's Hospital.",
     items: [
       "21 outreach events — schools, libraries, STEM fairs, community demos",
@@ -133,7 +133,7 @@ export const OUTREACH = [
       "3,500–4,000 people impacted this year alone",
       "Donated full robotics kits to Seattle Children's Hospital",
     ]},
-  { n: "03", h: "FLL Mentorship",
+  { n: "03", h: "FLL Mentorship", icon: "graduation", accent: "#f59e0b",
     d: "We mentor four active FLL teams, providing coaching, strategy sessions, and engineering notebook guidance. Our members competed in FLL for five seasons before moving to FTC — we pass that experience directly to the next generation.",
     items: [
       "4 active FLL teams currently mentored",
@@ -141,7 +141,7 @@ export const OUTREACH = [
       "5 combined seasons of FLL competition experience shared",
       "3 mentored teams have qualified for the World Championship",
     ]},
-  { n: "04", h: "Sonic Dunk!",
+  { n: "04", h: "Sonic Dunk!", icon: "trophy", accent: "#a855f7",
     d: "Our 2023–24 FLL Innovation Project. We designed a sonar-based audio guidance system to make basketball accessible to visually impaired athletes — giving players real-time audio cues for aim and shot placement without any visual reference.",
     items: [
       "FLL Innovation Project 2023–24 season",
@@ -149,7 +149,7 @@ export const OUTREACH = [
       "Designed for athletes with visual impairments",
       "Prototyped and presented at regional and state competitions",
     ]},
-  { n: "05", h: "Arduino Education",
+  { n: "05", h: "Arduino Education", icon: "cpu", accent: "#e63946",
     d: "We run workshops teaching younger students the basics of Arduino hardware and embedded programming. Students build their first circuits, write their first code, and learn how sensors, motors, and logic work — the same foundation our robot runs on.",
     items: [
       "Arduino and embedded hardware workshops for middle schoolers",
@@ -157,7 +157,7 @@ export const OUTREACH = [
       "Video series available for remote and self-paced learning",
       "Covers sensors, motors, logic, and basic robotics concepts",
     ]},
-  { n: "06", h: "TeamForge",
+  { n: "06", h: "TeamForge", icon: "code", accent: "#4aa3e8",
     d: "TeamForge is a free team-management platform we built for FTC and FLL teams. It brings scheduling, task tracking, notebook tools, and season planning into one place. We built it because we needed it, and we make it free for every team that does.",
     items: [
       "Free team-management platform for FTC and FLL",
